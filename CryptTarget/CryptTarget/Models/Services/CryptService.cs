@@ -1,9 +1,10 @@
 ﻿using CryptTarget.Models.Context;
+using CryptTarget.Models.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CryptTarget.Models.Services
 {
-    public class CryptService
+    public class CryptService: ICryptService
     {
         protected CryptContext _dbContext { get; set; }
         public CryptService(CryptContext cryptContext) 
