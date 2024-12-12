@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CryptTarget.Models.Crypt>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h1>Index</h1> 
+<form action="/Crypt/Index" method="get">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.ActionLink("Name","Index","Crypt",new{ id = 1 },new {@class="clear-column"})
+                </th>
+                <th>
+                    @Html.ActionLink("Symbol", "Index", "Crypt", new { id = 2 }, new { @class = "clear-column" })
+                </th>
+                <th>
+                    @Html.ActionLink("Price", "Index", "Crypt", new { id = 3 }, new { @class = "clear-column" })
+                </th>
+                <th>
+                    @Html.ActionLink("Market Cap", "Index", "Crypt", new { id = 4 }, new { @class = "clear-column" })
+                </th>
+                <th>
+                    @Html.ActionLink("Valume Change 24H", "Index", "Crypt", new { id = 5 }, new { @class = "clear-column" })
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src=@item.Logo alt="logo" style=" width:54px;height:54px;padding:5px;margin:5px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Symbol)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MarkteCap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValumeChange24H)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

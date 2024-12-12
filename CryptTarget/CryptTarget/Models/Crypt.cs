@@ -8,7 +8,6 @@
         public string Logo { get; set; }
         public string Price { get; set; }
         public string ValumeChange24H { get; set; }
-        public string MarkteCap { get; set; }
-        public DateTime? LastUpdate{ get; set; }
+        public string MarkteCap{ get; set; }
     }
 }
