@@ -1,12 +1,13 @@
 ﻿namespace CryptTarget.Models.Helpers
 {
-    public abstract class HanldeData
+    public class HanldeData
     {
-        public List<Crypt> GetDataCrypt()
+        public async Task<List<Crypt>> GetDataCrypt()
         {
             List<Crypt> values = new List<Crypt>();
-            dynamic obj = UrlHelper.makeAPICall();
-            foreach (var item in obj.data)
+            var obj = await UrlHelper.makeAPICall();
+            dynamic dy = obj;
+            foreach (var item in dy.data)
             {
                 values.Add(
                     new Crypt
@@ -17,8 +18,7 @@
                         Symbol = item.symbol,
                         Price = item.quote.USD.price,
                         ValumeChange24H = item.quote.USD.volume_change_24h,
-                        MarkteCap = item.quote.USD.market_cap,
-                        LastUpdate = item.quote.USD.last_update
+                        MarkteCap = item.quote.USD.market_cap, 
                     });
             }
             return values;

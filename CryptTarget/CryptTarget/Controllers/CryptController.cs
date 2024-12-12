@@ -1,20 +1,20 @@
 ﻿using CryptTarget.Models.Services;
+using CryptTarget.Models.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptTarget.Controllers
 {
     public class CryptController : Controller
     {
-        protected CryptService _cryptService;
-        public CryptController(CryptService service) 
+        protected ICryptService _cryptService;
+        public CryptController(ICryptService service) 
         {
             _cryptService = service;
         }
-        public IActionResult Index(int? id)
+        public async Task<IActionResult> Index(int? id)
         {
-            if (id == null)
-                id = 1; 
-            return View(id);
+            await _cryptService.UpdateCrypts(); 
+            return View(await _cryptService.GetCrypts(id));
         }
     }
 }

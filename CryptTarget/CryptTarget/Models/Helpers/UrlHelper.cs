@@ -5,7 +5,7 @@ namespace CryptTarget.Models.Helpers
 {
     public abstract class UrlHelper
     {
-        private protected static string ApiKey { get; set; } = "a9341d23-665d-414a-8b7b-99b1e550245f";
+        private protected static string ApiKey { get; set; } = "21c47b68-1808-4b90-adab-e9780b7c83e0";
         private protected static string Url { get; set; } = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?";
         public async static Task<JObject> makeAPICall()
         { 
