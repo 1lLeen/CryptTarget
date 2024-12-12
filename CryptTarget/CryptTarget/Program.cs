@@ -1,15 +1,23 @@
-var builder = WebApplication.CreateBuilder(args);
+using CryptTarget.Models.Context;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+var connString = builder.Configuration.GetConnectionString("DefaultConnection"); 
 builder.Services.AddRazorPages();
+builder.Configuration
+.AddJsonFile($"appsettings.json", optional: false)
+.AddJsonFile($"appsettings.Environment.json", optional: true)
+.AddEnvironmentVariables()
+.Build();
+
+builder.Services.AddDbContext<CryptContext>(options => options.UseSqlServer(connString));
+builder.Services.AddControllers();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+ 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/Error"); 
     app.UseHsts();
 }
 

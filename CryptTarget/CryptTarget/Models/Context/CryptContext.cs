@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CryptTarget.Models.Db
+namespace CryptTarget.Models.Context
 {
     public class CryptContext:DbContext
     {
+
+        public DbSet<Crypt> Crypts { get; set; }
+        public CryptContext() { }
         public CryptContext(DbContextOptions<CryptContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -13,7 +16,5 @@ namespace CryptTarget.Models.Db
         {
             base.OnConfiguring(optionsBuilder); 
         }
-
-        public DbSet<Crypt> crypts;
     }
 }
