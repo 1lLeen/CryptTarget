@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CryptTarget.Models.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CryptTarget.Controllers
 {
     public class CryptController : Controller
     {
-        public IActionResult Index()
+        protected CryptService _cryptService;
+        public CryptController(CryptService service) 
         {
-            return View();
+            _cryptService = service;
+        }
+        public IActionResult Index(int? id)
+        {
+            if (id == null)
+                id = 1; 
+            return View(id);
         }
     }
 }
