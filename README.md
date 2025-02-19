@@ -1,5 +1,15 @@
 # CryptTarget
-It's my old project. Just I wanna show my skills in my project
+
+Приложение для отображения текущих цен на криптовалюты. Реализовано на базе .NET Core.
+
+## Особенности
+- Получение данных о криптовалютах через API.
+- Отображение цен в реальном времени.
+
+## Установка
+1. Клонируйте репозиторий: `git clone https://github.com/1lLeen/CryptTarget.git`
+2. Установите зависимости: `dotnet restore`
+3. Запустите проект: `dotnet run`
 
 
 ## Getting started
